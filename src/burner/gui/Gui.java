@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle;
 import org.powerbot.script.methods.MethodContext;
 
 import burner.Burner;
+import tasks.*;
 
 public class Gui extends JPanel {
 	
@@ -29,7 +30,7 @@ public class Gui extends JPanel {
 	}
 	//[9]USE 50/50 CHANCE OF MISS CLICKING THE TREE BY 1 TILE THEN CLICKING THE OBJECT
 	private void startActions(ActionEvent e) {
-		int treeId;
+		int treeId = 0;
 		switch(wood.getSelectedItem().toString()) {
 			case "Tree": 
 				treeId = 1276;
@@ -37,7 +38,9 @@ public class Gui extends JPanel {
 			case "Oak Tree":
 				treeId = 1281;
 		}
-		
+		burner.taskList.add(new Burn(ctx, treeId));
+		frame1.setVisible(false);
+		frame1.dispose();
 	}
 	
 	private void getThingsReady() {
